@@ -21,15 +21,13 @@ const Header = () => {
             href="/"
             className="flex flex-row space-x-3 items-center justify-center md:hidden"
           >
-            <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
-            <span className="font-bold text-xl flex ">Logo</span>
+            <img src="images/logo.png" className="h-7 w-7 rounded-full" />
+            <span className="font-bold text-xl flex ">Medical System</span>
           </Link>
         </div>
 
         <div className="hidden md:block">
-          <div className="h-8 w-8 rounded-full bg-zinc-300 flex items-center justify-center text-center">
-            <span className="font-semibold text-sm">HQ</span>
-          </div>
+          <img src="images/user_profile.png" className="h-7 w-7 rounded-full" />
         </div>
       </div>
     </div>
