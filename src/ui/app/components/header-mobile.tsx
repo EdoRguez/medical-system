@@ -51,7 +51,7 @@ const HeaderMobile = () => {
       ref={containerRef}
     >
       <motion.div
-        className="absolute inset-0 right-0 w-full bg-white"
+        className="absolute inset-0 right-0 w-full bg-dark"
         variants={sidebar}
       />
       <motion.ul
@@ -70,11 +70,12 @@ const HeaderMobile = () => {
                   <Link
                     href={item.path}
                     onClick={() => toggleOpen()}
-                    className={`flex w-full text-2xl ${
+                    className={`flex items-center w-full text-lg text-secondary ${
                       item.path === pathname ? 'font-bold' : ''
                     }`}
                   >
-                    {item.title}
+                    {item.icon}
+                    <span className='ml-2'>{item.title}</span>
                   </Link>
                 </MenuItem>
               )}
@@ -96,7 +97,7 @@ export default HeaderMobile;
 const MenuToggle = ({ toggle }: { toggle: any }) => (
   <button
     onClick={toggle}
-    className="pointer-events-auto absolute right-4 top-[14px] z-30"
+    className="pointer-events-auto absolute right-4 top-[14px] z-30 rounded-full bg-white pt-[3.5px] pl-[3.5px]"
   >
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
@@ -158,22 +159,23 @@ const MenuItemWithSubMenu: React.FC<MenuItemWithSubMenuProps> = ({
     <>
       <MenuItem>
         <button
-          className="flex w-full text-2xl"
+          className="flex w-full text-lg"
           onClick={() => setSubMenuOpen(!subMenuOpen)}
         >
           <div className="flex flex-row justify-between w-full items-center">
             <span
-              className={`${pathname.includes(item.path) ? 'font-bold' : ''}`}
+              className={`flex flex-row items-center text-secondary ${pathname.includes(item.path) ? 'font-bold' : ''}`}
             >
-              {item.title}
+              {item.icon}
+              <span className='ml-2'>{item.title}</span>
             </span>
-            <div className={`${subMenuOpen && 'rotate-180'}`}>
+            <div className={`text-secondary ${subMenuOpen && 'rotate-180'}`}>
               <Icon icon="lucide:chevron-down" width="24" height="24" />
             </div>
           </div>
         </button>
       </MenuItem>
-      <div className="mt-2 ml-2 flex flex-col space-y-2">
+      <div className="mt-2 ml-2 flex flex-col space-y-2 text-secondary">
         {subMenuOpen && (
           <>
             {item.subMenuItems?.map((subItem, subIdx) => {

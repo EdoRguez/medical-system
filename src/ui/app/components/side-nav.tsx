@@ -11,11 +11,11 @@ import { Icon } from '@iconify/react';
 
 const SideNav = () => {
   return (
-    <div className="md:w-60 bg-primary h-screen flex-1 fixed border-r border-zinc-200 hidden md:flex">
+    <div className="md:w-60 bg-dark h-screen flex-1 fixed hidden md:flex">
       <div className="flex flex-col space-y-6 w-full">
         <Link
           href="/"
-          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
+          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 h-12 w-full"
         >
           <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
           <span className="font-bold text-sm hidden md:flex">Logo</span>
@@ -46,16 +46,16 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         <>
           <button
             onClick={toggleSubMenu}
-            className={`flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between hover:bg-zinc-100 ${
-              pathname.includes(item.path) ? 'bg-zinc-100' : ''
+            className={`flex flex-row items-center p-2 rounded-lg w-full justify-between hover:bg-darksecondary ${
+              pathname.includes(item.path) ? 'bg-darksecondary' : ''
             }`}
           >
-            <div className="flex flex-row space-x-4 items-center text-white">
+            <div className="flex flex-row space-x-4 items-center text-secondary">
               {item.icon}
-              <span className="font-semibold text-sm text-white flex">{item.title}</span>
+              <span className="font-semibold text-sm text-secondary flex">{item.title}</span>
             </div>
 
-            <div className={`${subMenuOpen ? 'rotate-180' : ''} flex text-white`}>
+            <div className={`${subMenuOpen ? 'rotate-180' : ''} flex text-secondary`}>
               <Icon icon="lucide:chevron-down" width="24" height="24" />
             </div>
           </button>
@@ -71,7 +71,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
                       subItem.path === pathname ? 'font-bold' : ''
                     }`}
                   >
-                    <span className='text-white text-sm'>{subItem.title}</span>
+                    <span className='text-secondary text-sm'>{subItem.title}</span>
                   </Link>
                 );
               })}
@@ -81,12 +81,12 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
       ) : (
         <Link
           href={item.path}
-          className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 text-white ${
-            item.path === pathname ? 'bg-zinc-100' : ''
+          className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-darksecondary text-secondary ${
+            item.path === pathname ? 'bg-darksecondary' : ''
           }`}
         >
           {item.icon}
-          <span className="font-semibold text-sm flex text-white">{item.title}</span>
+          <span className="font-semibold text-sm flex text-secondary">{item.title}</span>
         </Link>
       )}
     </div>
