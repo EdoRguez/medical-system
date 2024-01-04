@@ -2,23 +2,37 @@
 
 import { useEffect, useRef, useState } from "react";
 import { chartColors } from "./ChartjsConfig";
+import { Chart, Filler, LineController, LineElement, LinearScale, PointElement, TimeScale, Tooltip } from "chart.js";
+import { formatValue } from "@/app/utils/Utils";
+import 'chartjs-adapter-moment';
 
-const LineChartSimple = () => {
-  const [chart, setChart] = useState(null);
+interface LineChartSimpleProps {
+  data: any,
+  width: number,
+  height: number
+}
+
+Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip);
+
+const LineChartSimple: React.FC<LineChartSimpleProps> = ({
+  data,
+  width,
+  height
+}) => {
+  const [chart, setChart] = useState<any>(null);
   const canvas = useRef(null);
-  const { tooltipBodyColor, tooltipBgColor, tooltipBorderColor, chartAreaBg } =
-    chartColors;
+  const { tooltipBodyColor, tooltipBgColor, tooltipBorderColor, chartAreaBg } = chartColors;
 
   useEffect(() => {
-    const ctx = canvas.current;
+    const ctx: any = canvas.current;
     // eslint-disable-next-line no-unused-vars
-    const newChart = new Chart(ctx, {
+    const newChart: any = new Chart(ctx, {
       type: "line",
       data: data,
       options: {
-        chartArea: {
-          backgroundColor: darkMode ? chartAreaBg.dark : chartAreaBg.light,
-        },
+        // chartArea: {
+        //   backgroundColor: chartAreaBg.dark,
+        // },
         layout: {
           padding: 20,
         },
@@ -39,18 +53,12 @@ const LineChartSimple = () => {
         plugins: {
           tooltip: {
             callbacks: {
-              title: () => false, // Disable tooltip title
+              //title: () => false, // Disable tooltip title
               label: (context) => formatValue(context.parsed.y),
             },
-            bodyColor: darkMode
-              ? tooltipBodyColor.dark
-              : tooltipBodyColor.light,
-            backgroundColor: darkMode
-              ? tooltipBgColor.dark
-              : tooltipBgColor.light,
-            borderColor: darkMode
-              ? tooltipBorderColor.dark
-              : tooltipBorderColor.light,
+            bodyColor: tooltipBodyColor.dark,
+            backgroundColor: tooltipBgColor.dark,
+            borderColor: tooltipBorderColor.dark,
           },
           legend: {
             display: false,
@@ -68,23 +76,6 @@ const LineChartSimple = () => {
     return () => newChart.destroy();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (!chart) return;
-
-    if (darkMode) {
-      chart.options.chartArea.backgroundColor = chartAreaBg.dark;
-      chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.dark;
-      chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.dark;
-      chart.options.plugins.tooltip.borderColor = tooltipBorderColor.dark;
-    } else {
-      chart.options.chartArea.backgroundColor = chartAreaBg.light;
-      chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.light;
-      chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.light;
-      chart.options.plugins.tooltip.borderColor = tooltipBorderColor.light;
-    }
-    chart.update("none");
-  }, [currentTheme]);
 
   return <canvas ref={canvas} width={width} height={height}></canvas>;
 };

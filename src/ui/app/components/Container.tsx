@@ -10,8 +10,6 @@ const Container: React.FC<ContainerProps> = ({
     return ( 
     <div
       className="
-        bg-dark
-        rounded-md
         xl:px-20 
         md:px-10
         sm:px-2

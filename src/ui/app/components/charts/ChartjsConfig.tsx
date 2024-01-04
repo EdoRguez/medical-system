@@ -1,7 +1,9 @@
 // Import Chart.js
+import { hexToRGB, tailwindConfig } from '@/app/utils/Utils';
 import { Chart, Tooltip } from 'chart.js';
 // Import Tailwind config
-import { tailwindConfig, hexToRGB } from '../utils/Utils';
+// import { tailwindConfig, hexToRGB } from '../utils/Utils';
+
 
 Chart.register(Tooltip);
 
@@ -22,7 +24,7 @@ Chart.defaults.plugins.tooltip.padding = 8;
 Chart.register({
   id: 'chartAreaPlugin',
   // eslint-disable-next-line object-shorthand
-  beforeDraw: (chart) => {
+  beforeDraw: (chart: any) => {
     if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
       const ctx:any = chart.canvas.getContext('2d');
       const { chartArea } = chart;

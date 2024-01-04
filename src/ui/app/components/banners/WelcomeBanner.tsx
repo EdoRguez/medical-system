@@ -2,7 +2,7 @@
 
 const WelcomeBanner = () => {
     return (
-    <div className="relative bg-dark p-4 sm:p-6 rounded-sm overflow-hidden">
+    <div className="relative bg-dark p-4 sm:p-6 rounded-md overflow-hidden">
       {/* Background illustration */}
       <div className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
         <svg width="319" height="198" xmlnsXlink="http://www.w3.org/1999/xlink">
