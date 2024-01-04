@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SideNav from "./components/side-nav";
-import MarginWidthWrapper from "./components/margin-width-wrapper";
+import SideNav from "./components/SideNav";
+import MarginWidthWrapper from "./components/MarginWidthWrapper";
+import HeaderMobile from "./components/HeaderMobile";
+import PageWrapper from "./components/PageWrapper";
 import Header from "./components/header";
-import HeaderMobile from "./components/header-mobile";
-import PageWrapper from "./components/page-wrapper";
-import { Providers } from "./components/providers";
+import Providers from "./components/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 

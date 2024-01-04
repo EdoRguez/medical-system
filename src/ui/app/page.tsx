@@ -1,15 +1,16 @@
-import Image from 'next/image'
+'use client';
+
+import WelcomeBanner from './components/banners/WelcomeBanner'
+import Container from './components/Container'
 
 export default function Home() {
   return (
-    <>
-      <span className="font-bold text-4xl">Home</span>
-      <div className="border-dashed border border-zinc-500 w-full h-12 rounded-lg"></div>
-      <div className="border-dashed border border-zinc-500 w-full h-64 rounded-lg"></div>
-      <div className="border-dashed border border-zinc-500 w-full h-64 rounded-lg"></div>
-      <div className="border-dashed border border-zinc-500 w-full h-64 rounded-lg"></div>
-      <div className="border-dashed border border-zinc-500 w-full h-64 rounded-lg"></div>
-      <div className="border-dashed border border-zinc-500 w-full h-64 rounded-lg"></div>
-    </>
-  )
+    <Container>
+      <WelcomeBanner />
+
+      <div className='mt-2 sm:flex sm:justify-between sm:items-center'>
+
+      </div>
+    </Container>
+  );
 }
