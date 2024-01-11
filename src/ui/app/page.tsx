@@ -1,6 +1,7 @@
 'use client';
 
 import WelcomeBanner from './components/banners/WelcomeBanner'
+import BarChartCard from './components/Cards/BarChartCard';
 import SimpleLineChartCard from './components/Cards/SimpleLineChartCard';
 import Container from './components/Container'
 
@@ -9,10 +10,14 @@ export default function Home() {
     <Container>
       <WelcomeBanner />
 
-      <div className='mt-2 sm:flex sm:justify-between sm:items-center'>
+      <div className='mt-2 grid grid-cols-1 lg:grid-cols-3 gap-4'>
         <SimpleLineChartCard />
         <SimpleLineChartCard />
         <SimpleLineChartCard />
+      </div>
+
+      <div className='mt-2'>
+        <BarChartCard />
       </div>
     </Container>
   );
