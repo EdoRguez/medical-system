@@ -1,34 +1,50 @@
-'use client';
+"use client";
 
 import { formatValue, tailwindConfig } from "@/app/utils/Utils";
-import { BarController, BarElement, Chart, Legend, LinearScale, TimeScale, Tooltip } from "chart.js";
+import {
+  BarController,
+  BarElement,
+  Chart,
+  Legend,
+  LinearScale,
+  TimeScale,
+  Tooltip,
+} from "chart.js";
 import React, { useEffect, useRef, useState } from "react";
 import { chartColors } from "./ChartjsConfig";
 
 interface BarChartProps {
-  data: any,
-  width: number,
-  height: number
+  data: any;
+  width: number;
+  height: number;
 }
 
-Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend);
+Chart.register(
+  BarController,
+  BarElement,
+  LinearScale,
+  TimeScale,
+  Tooltip,
+  Legend
+);
 
-const BarChart: React.FC<BarChartProps> = ({
-    data,
-    width,
-    height
-}) => {
-
-const [chart, setChart] = useState(null)
+const BarChart: React.FC<BarChartProps> = ({ data, width, height }) => {
+  const [chart, setChart] = useState(null);
   const canvas = useRef(null);
   const legend = useRef(null);
-  const { textColor, gridColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors;
+  const {
+    textColor,
+    gridColor,
+    tooltipBodyColor,
+    tooltipBgColor,
+    tooltipBorderColor,
+  } = chartColors;
 
   useEffect(() => {
     const ctx: any = canvas.current;
     // eslint-disable-next-line no-unused-vars
     const newChart: any = new Chart(ctx, {
-      type: 'bar',
+      type: "bar",
       data: data,
       options: {
         layout: {
@@ -54,12 +70,12 @@ const [chart, setChart] = useState(null)
             },
           },
           x: {
-            type: 'time',
+            type: "time",
             time: {
-              parser: 'MM-DD-YYYY',
-              unit: 'month',
+              parser: "MM-DD-YYYY",
+              unit: "month",
               displayFormats: {
-                month: 'MMM YY',
+                month: "MMM YY",
               },
             },
             border: {
@@ -89,7 +105,7 @@ const [chart, setChart] = useState(null)
         },
         interaction: {
           intersect: false,
-          mode: 'nearest',
+          mode: "nearest",
         },
         animation: {
           duration: 500,
@@ -99,7 +115,7 @@ const [chart, setChart] = useState(null)
       },
       plugins: [
         {
-          id: 'htmlLegend',
+          id: "htmlLegend",
           afterUpdate(c: any, args, options) {
             const ul: any = legend.current;
             if (!ul) return;
@@ -108,45 +124,54 @@ const [chart, setChart] = useState(null)
               ul.firstChild.remove();
             }
             // Reuse the built-in legendItems generator
-            const items: any = c.options.plugins.legend.labels.generateLabels(c);
+            const items: any =
+              c.options.plugins.legend.labels.generateLabels(c);
             items.forEach((item: any) => {
-              const li = document.createElement('li');
+              const li = document.createElement("li");
               li.style.marginRight = tailwindConfig().theme.margin[4];
               // Button element
-              const button = document.createElement('button');
-              button.style.display = 'inline-flex';
-              button.style.alignItems = 'center';
-              button.style.opacity = item.hidden ? '.3' : '';
+              const button = document.createElement("button");
+              button.style.display = "inline-flex";
+              button.style.alignItems = "center";
+              button.style.opacity = item.hidden ? ".3" : "";
               button.onclick = () => {
-                c.setDatasetVisibility(item.datasetIndex, !c.isDatasetVisible(item.datasetIndex));
+                c.setDatasetVisibility(
+                  item.datasetIndex,
+                  !c.isDatasetVisible(item.datasetIndex)
+                );
                 c.update();
               };
               // Color box
-              const box = document.createElement('span');
-              box.style.display = 'block';
+              const box = document.createElement("span");
+              box.style.display = "block";
               box.style.width = tailwindConfig().theme.width[3];
               box.style.height = tailwindConfig().theme.height[3];
               box.style.borderRadius = tailwindConfig().theme.borderRadius.full;
               box.style.marginRight = tailwindConfig().theme.margin[2];
-              box.style.borderWidth = '3px';
+              box.style.borderWidth = "3px";
               box.style.borderColor = item.fillStyle;
-              box.style.pointerEvents = 'none';
+              box.style.pointerEvents = "none";
               // Label
-              const labelContainer = document.createElement('span');
-              labelContainer.style.display = 'flex';
-              labelContainer.style.alignItems = 'center';
-              const value = document.createElement('span');
-              value.classList.add('text-slate-800', 'dark:text-slate-100');
-              value.style.fontSize = tailwindConfig().theme.fontSize['3xl'][0];
-              value.style.lineHeight = tailwindConfig().theme.fontSize['3xl'][1].lineHeight;
+              const labelContainer = document.createElement("span");
+              labelContainer.style.display = "flex";
+              labelContainer.style.alignItems = "center";
+              const value = document.createElement("span");
+              value.classList.add("text-slate-800", "dark:text-slate-100");
+              value.style.fontSize = tailwindConfig().theme.fontSize["3xl"][0];
+              value.style.lineHeight =
+                tailwindConfig().theme.fontSize["3xl"][1].lineHeight;
               value.style.fontWeight = tailwindConfig().theme.fontWeight.bold;
               value.style.marginRight = tailwindConfig().theme.margin[2];
-              value.style.pointerEvents = 'none';
-              const label = document.createElement('span');
-              label.classList.add('text-slate-500', 'dark:text-slate-400');
+              value.style.pointerEvents = "none";
+              const label = document.createElement("span");
+              label.classList.add("text-slate-500", "dark:text-slate-400");
               label.style.fontSize = tailwindConfig().theme.fontSize.sm[0];
-              label.style.lineHeight = tailwindConfig().theme.fontSize.sm[1].lineHeight;
-              const theValue = c.data.datasets[item.datasetIndex].data.reduce((a: number, b: number) => a + b, 0);
+              label.style.lineHeight =
+                tailwindConfig().theme.fontSize.sm[1].lineHeight;
+              const theValue = c.data.datasets[item.datasetIndex].data.reduce(
+                (a: number, b: number) => a + b,
+                0
+              );
               const valueText = document.createTextNode(formatValue(theValue));
               const labelText = document.createTextNode(item.text);
               value.appendChild(valueText);
@@ -164,7 +189,7 @@ const [chart, setChart] = useState(null)
     });
     setChart(newChart);
     return () => newChart.destroy();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -177,6 +202,6 @@ const [chart, setChart] = useState(null)
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default BarChart;

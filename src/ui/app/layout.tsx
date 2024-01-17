@@ -5,8 +5,8 @@ import SideNav from "./components/SideNav";
 import MarginWidthWrapper from "./components/MarginWidthWrapper";
 import HeaderMobile from "./components/HeaderMobile";
 import PageWrapper from "./components/PageWrapper";
-import Header from "./components/header";
-import Providers from "./components/providers";
+import Providers from "./components/Providers";
+import Header from "./components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 

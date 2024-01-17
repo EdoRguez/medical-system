@@ -1,19 +1,13 @@
 "use client";
 
 import React from "react";
-
 import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
-
-import useScroll from "../hooks/useScroll";
 
 const Header = () => {
-  const scrolled = useScroll(5);
-  const selectedLayout = useSelectedLayoutSegment();
 
   return (
     <div
-      className={'sticky inset-x-0 top-0 z-30 w-full transition-all border-b border-gray-200 border-b border-gray-200 bg-white'}
+      className={'sticky inset-x-0 top-0 z-30 w-full transition-all border-b border-slate-600 bg-dark'}
     >
       <div className="flex h-[62px] items-center justify-between px-4">
         <div className="flex items-center space-x-4">

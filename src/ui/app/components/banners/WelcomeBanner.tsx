@@ -2,7 +2,7 @@
 
 const WelcomeBanner = () => {
     return (
-    <div className="relative bg-dark p-4 sm:p-6 rounded-md overflow-hidden">
+    <div className="relative bg-dark p-4 sm:p-6 rounded-md overflow-hidden border border-slate-600">
       {/* Background illustration */}
       <div className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
         <svg width="319" height="198" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -48,7 +48,7 @@ const WelcomeBanner = () => {
       {/* Content */}
       <div className="relative">
         <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Good afternoon, Medical System. 👋</h1>
-        <p className="text-secondary">Here is what's happening with your projects today:</p>
+        <p className="text-secondary">Here is what's happening with your dashboard today:</p>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         dark: '#1F2937',
+        darkpagebackground: '#111827',
         darksecondary: '#374151',
         secondary: '#cccccc'
       }
