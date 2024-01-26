@@ -2,19 +2,18 @@ syntax = "proto3";
 
 package patient;
 
-option go_package="./pkg/pb";
+option go_package= "github.com/EdoRguez/medical-system/patient-svc/patient";
 
-service OrderService{
-  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+service PatientService{
+  rpc CreatePatient(CreatePatientRequest) returns (CreatePatientResponse);
 }
 
-message CreateOrderRequest{
-  int64 productId = 1;
-  int64 quantity = 2;
-  int64 userId = 3;
+message CreatePatientRequest{
+  string firstName = 1;
+  string lastName = 2;
 }
 
-message CreateOrderResponse{
+message CreatePatientResponse{
   int64 status = 1;
   string error = 2;
   int64 id = 3;
