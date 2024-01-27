@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package patient;
 
-option go_package= "github.com/EdoRguez/medical-system/patient-svc/patient";
+option go_package= "github.com/EdoRguez/medical-system/patient-svc/pb";
 
 service PatientService{
   rpc CreatePatient(CreatePatientRequest) returns (CreatePatientResponse);
