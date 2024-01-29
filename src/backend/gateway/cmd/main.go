@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/EdoRguez/medical-system/gateway/pkg/config"
+	"github.com/EdoRguez/medical-system/gateway/pkg/patient"
 	"github.com/EdoRguez/medical-system/gateway/pkg/scheduling"
 	"github.com/gorilla/mux"
 )
@@ -42,6 +43,7 @@ func startServer(address string) error {
 	baseRoute := sm.PathPrefix("/api").Subrouter()
 
 	scheduling.LoadRoutes(baseRoute)
+	patient.LoadRoutes(baseRoute)
 
 	s := &http.Server{
 		Addr:         address,

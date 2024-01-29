@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package patient;
+package pb;
 
 option go_package= "github.com/EdoRguez/medical-system/patient-svc/pb";
 

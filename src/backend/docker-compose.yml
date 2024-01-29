@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  patient-svc:
+      image: amalmadhu06/ecom-product-svc
+      ports:
+        - "50052:50052"
+      environment:
+        - PORT=:50052
+        - DB_URL=postgres://postgres:postgres@patient-db:5432/patient_svc
+      depends_on:
+        - patient-db
+      restart: always
+
+  patient-db:
+    image: postgres:latest
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_DB=patient_svc
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: always
