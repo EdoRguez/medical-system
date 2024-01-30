@@ -7,7 +7,7 @@ type Config struct {
 	Port               string `mapstructure:"PORT"`
 	DBDriver           string `mapstructure:"DB_DRIVER"`
 	DBSource           string `mapstructure:"DB_SOURCE"`
-	SCHEDULING_SVC_URL string `mapstructure:"SCHEDULING_SVC_URL"`
+	Scheduling_Svc_Url string `mapstructure:"SCHEDULING_SVC_URL"`
 }
 
 func LoadConfig() (config Config, err error) {

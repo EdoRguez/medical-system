@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v4.25.2
-// source: pkg/pb/patient.proto
+// source: pkg/patient/pb/patient.proto
 
 package pb
 
@@ -105,5 +105,5 @@ var PatientService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "pkg/pb/patient.proto",
+	Metadata: "pkg/patient/pb/patient.proto",
 }

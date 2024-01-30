@@ -12,7 +12,6 @@ import (
 
 	"github.com/EdoRguez/medical-system/gateway/pkg/config"
 	"github.com/EdoRguez/medical-system/gateway/pkg/patient"
-	"github.com/EdoRguez/medical-system/gateway/pkg/scheduling"
 	"github.com/gorilla/mux"
 )
 
@@ -23,7 +22,7 @@ func main() {
 	}()
 
 	// load config
-	env, err := config.LoadConfig(".")
+	env, err := config.LoadConfig()
 	if err != nil {
 		fmt.Printf("error: %v", err)
 		exitCode = 1
@@ -31,7 +30,7 @@ func main() {
 	}
 
 	// run the server
-	err = startServer(env.HTTPServerAddress)
+	err = startServer(env.Gateway_Url)
 	if err != nil {
 		log.Fatal("Cannot start server: ", err)
 	}
@@ -42,7 +41,7 @@ func startServer(address string) error {
 
 	baseRoute := sm.PathPrefix("/api").Subrouter()
 
-	scheduling.LoadRoutes(baseRoute)
+	// scheduling.LoadRoutes(baseRoute)
 	patient.LoadRoutes(baseRoute)
 
 	s := &http.Server{

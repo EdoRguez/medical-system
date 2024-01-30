@@ -3,14 +3,14 @@ package config
 import "github.com/spf13/viper"
 
 type Config struct {
-	Environment       string `mapstructure:"ENVIRONMENT"`
-	DBDriver          string `mapstructure:"DB_DRIVER"`
-	DBSource          string `mapstructure:"DB_SOURCE"`
-	HTTPServerAddress string `mapstructure:"HTTP_SERVER_ADDRESS"`
+	Environment     string `mapstructure:"ENVIRONMENT"`
+	Gateway_Url     string `mapstructure:"GATEWAY_URL"`
+	Patient_Svc_Url string `mapstructure:"PATIENT_SVC_URL"`
 }
 
-func LoadConfig(path string) (config Config, err error) {
-	viper.AddConfigPath(path)
+func LoadConfig() (config Config, err error) {
+	viper.AddConfigPath(".")
+	viper.SetConfigName("app")
 	viper.SetConfigType("env")
 
 	viper.AutomaticEnv()
