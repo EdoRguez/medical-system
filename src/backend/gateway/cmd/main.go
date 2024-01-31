@@ -22,7 +22,7 @@ func main() {
 	}()
 
 	// load config
-	env, err := config.LoadConfig()
+	conf, err := config.LoadConfig()
 	if err != nil {
 		fmt.Printf("error: %v", err)
 		exitCode = 1
@@ -30,19 +30,19 @@ func main() {
 	}
 
 	// run the server
-	err = startServer(env.Gateway_Url)
+	err = startServer(conf.Gateway_Url, &conf)
 	if err != nil {
 		log.Fatal("Cannot start server: ", err)
 	}
 }
 
-func startServer(address string) error {
+func startServer(address string, conf *config.Config) error {
 	sm := mux.NewRouter()
 
 	baseRoute := sm.PathPrefix("/api").Subrouter()
 
 	// scheduling.LoadRoutes(baseRoute)
-	patient.LoadRoutes(baseRoute)
+	patient.LoadRoutes(baseRoute, conf)
 
 	s := &http.Server{
 		Addr:         address,
