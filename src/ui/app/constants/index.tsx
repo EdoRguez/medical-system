@@ -8,6 +8,11 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <Icon icon="lucide:home" width="24" height="24" />,
   },
   {
+    title: 'Scheduling',
+    path: '/scheduling',
+    icon: <Icon icon="bx:calendar" width="24" height="24" />,
+  },
+  {
     title: 'Projects',
     path: '/projects',
     icon: <Icon icon="lucide:folder" width="24" height="24" />,
@@ -17,11 +22,6 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
       { title: 'Web Design', path: '/projects/web-design' },
       { title: 'Graphic Design', path: '/projects/graphic-design' },
     ],
-  },
-  {
-    title: 'Messages',
-    path: '/messages',
-    icon: <Icon icon="lucide:mail" width="24" height="24" />,
   },
   {
     title: 'Settings',
