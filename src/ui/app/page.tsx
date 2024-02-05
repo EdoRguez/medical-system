@@ -1,10 +1,10 @@
 "use client";
 
 import WelcomeBanner from "./components/banners/WelcomeBanner";
-import BarChartCard from "./components/cards/BarChartCard";
-import DoughnutChartCard from "./components/cards/DoughnutChartCard";
-import ListCard from "./components/cards/ListCard";
-import SimpleLineChartCard from "./components/cards/SimpleLineChartCard";
+import BarChartCard from "./components/Cards/BarChartCard";
+import DoughnutChartCard from "./components/Cards/DoughnutChartCard";
+import ListCard from "./components/Cards/ListCard";
+import SimpleLineChartCard from "./components/Cards/SimpleLineChartCard";
 import Container from "./components/Container";
 
 export default function Home() {
