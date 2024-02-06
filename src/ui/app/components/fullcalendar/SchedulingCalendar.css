@@ -1,9 +1,16 @@
 .fc-col-header-cell-cushion,
 .fc-toolbar-title,
-.fc-daygrid-day {
+.fc-daygrid-day,
+
+.fc-multimonth-title {
     color: white;
 }
 
+
 .fc-day-today {
     background-color: rgba(26, 86, 219, .3) !important;
+}
+.fc-daygrid-day:hover {
+    background-color: rgba(26, 86, 219, .8) !important;
+    cursor: pointer;
 }
