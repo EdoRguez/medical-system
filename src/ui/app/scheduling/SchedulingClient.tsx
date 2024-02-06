@@ -1,21 +1,14 @@
-'use client';
+"use client";
 
-import React from 'react'
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import SimpleCard from '../components/Cards/SimpleCard';
+import SimpleCard from "../components/cards/SimpleCard";
+import SchedulingCalendar from "../components/fullcalendar/SchedulingCalendar";
 
 const SchedulingClient = () => {
   return (
     <SimpleCard>
-      <FullCalendar
-        plugins={[ dayGridPlugin ]}
-        initialView="dayGridMonth"
-        selectable={true}
-        
-      />
+      <SchedulingCalendar />
     </SimpleCard>
-  )
+  );
 };
 
 export default SchedulingClient;
