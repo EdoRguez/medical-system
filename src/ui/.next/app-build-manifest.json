@@ -1,16 +1,21 @@
 {
   "pages": {
-    "/scheduling/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/scheduling/page.css",
-      "static/chunks/app/scheduling/page.js"
+      "static/chunks/app/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/scheduling/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/scheduling/page.css",
+      "static/chunks/app/scheduling/page.js"
     ]
   }
 }

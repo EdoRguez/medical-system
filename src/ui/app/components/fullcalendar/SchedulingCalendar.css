@@ -1,16 +1,45 @@
 .fc-col-header-cell-cushion,
 .fc-toolbar-title,
 .fc-daygrid-day,
-
 .fc-multimonth-title {
-    color: white;
+  color: white;
 }
 
+.fc-multimonth-title,
+.fc-col-header-cell {
+  background-color: #1e293b;
+}
+
+.fc-daygrid-day {
+  background-color: #1f2937;
+}
+
+.fc-daygrid-day,
+.fc-col-header-cell,
+.fc-toolbar-title,
+.fc-multimonth-title {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
 
 .fc-day-today {
-    background-color: rgba(26, 86, 219, .3) !important;
+  background-color: #315fc4 !important;
 }
-.fc-daygrid-day:hover {
-    background-color: rgba(26, 86, 219, .8) !important;
-    cursor: pointer;
+
+.fc-day-past:hover,
+.fc-day-today:hover,
+.fc-day-future:hover {
+  background-color: #004ef5 !important;
+  cursor: pointer;
+}
+
+.fc-day-disabled,
+.fc-day-other,
+.fc-day-other:hover {
+  background-color: #111827 !important;
+  cursor: auto;
 }

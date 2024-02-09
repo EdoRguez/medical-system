@@ -14,6 +14,7 @@ const SchedulingCalendar = () => {
       plugins={[dayGridPlugin, multiMonthPlugin]}
       initialView="dayGridMonth"
       selectable={true}
+      contentHeight={'auto'}
       headerToolbar={{
         left: 'prev,next today',
         center: 'title',
